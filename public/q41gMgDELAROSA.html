@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="card">
+<h2>Add a Movie</h2>
+
+<label>Title:</label>
+<input type="text" id="title">
+
+<label>Year:</label>
+<input type="number" id="year">
+
+<label>Genre:</label>
+<select id="genre">
+<option>Action</option>
+<option>Comedy</option>
+<option>Drama</option>
+<option>Horror</option>
+<option>Sci-Fi</option>
+</select>
+
+<label>Rating:</label>
+<div id="stars">
+<span class="star" data-value="1">★</span>
+<span class="star" data-value="2">★</span>
+<span class="star" data-value="3">★</span>
+<span class="star" data-value="4">★</span>
+<span class="star" data-value="5">★</span>
+</div>
+
+<button id="addMovie">Add Movie</button>
+
+<h3>Movie List</h3>
+<ul id="movieList"></ul>
+
+</div>
+
+<script src="script2.js"></script>
+</body>
+</html>
