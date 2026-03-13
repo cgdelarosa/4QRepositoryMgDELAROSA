@@ -112,3 +112,20 @@ color:#ffc107;
 font-size:16px;
 margin-left:5px;
 }
+
+.delete-btn{
+width:auto;
+margin-left:8px;
+padding:2px 5px;
+font-size:11px;
+background:#f2f2f2;
+color:#333;
+border:1px solid #ccc;
+border-radius:3px;
+cursor:pointer;
+display:inline-block;
+}
+
+.delete-btn:hover{
+background:#e0e0e0;
+}

@@ -4,10 +4,11 @@ const movieList = document.getElementById("movieList")
 
 let rating = 0
 
+// STAR RATING
 stars.forEach(star => {
     star.addEventListener("click", () => {
 
-        rating = star.dataset.value
+        rating = Number(star.dataset.value)
 
         stars.forEach(s => s.classList.remove("active"))
 
@@ -31,52 +32,86 @@ function loadMovies(){
     })
 }
 
+
+// ADD OR UPDATE MOVIE
 addMovieBtn.addEventListener("click", () => {
 
     const title = document.getElementById("title").value
     const year = document.getElementById("year").value
     const genre = document.getElementById("genre").value
 
-    const movie = {
-        title:title,
-        year:year,
-        genre:genre,
-        rating:rating
+    if(title === "" || year === "" || rating === 0){
+        alert("Please fill all fields and select rating")
+        return
     }
 
     const movies = JSON.parse(localStorage.getItem("movies")) || []
 
-    movies.push(movie)
+    const existingMovie = movies.find(m => 
+        m.title.toLowerCase() === title.toLowerCase()
+    )
+
+    if(existingMovie){
+
+        // UPDATE (average rating)
+        existingMovie.rating = Math.round(
+            (Number(existingMovie.rating) + Number(rating)) / 2
+        )
+
+        existingMovie.year = year
+        existingMovie.genre = genre
+
+    } else {
+
+        const movie = {
+            title:title,
+            year:year,
+            genre:genre,
+            rating:rating
+        }
+
+        movies.push(movie)
+    }
 
     localStorage.setItem("movies", JSON.stringify(movies))
 
-    displayMovie(movie)
+    loadMovies()
 
 })
 
+
+// DISPLAY MOVIE
 function displayMovie(movie){
 
     const li = document.createElement("li")
 
-    let stars = "★".repeat(movie.rating)
+    let starsDisplay = "★".repeat(movie.rating)
 
-    li.textContent =
-    `${movie.title} (${movie.year}) - ${movie.genre}, Rating: ${stars}`
+    li.innerHTML =
+    `${movie.title} (${movie.year}) - ${movie.genre}, Rating: 
+    <span class="movie-stars">${starsDisplay}</span>
+    <button class="delete-btn">Delete</button>`
+
+    const deleteBtn = li.querySelector(".delete-btn")
+
+    deleteBtn.addEventListener("click", () => {
+
+        const confirmDelete = confirm("Are you sure you want to delete?")
+
+        if(confirmDelete){
+
+            let movies = JSON.parse(localStorage.getItem("movies")) || []
+
+            movies = movies.filter(m => m.title !== movie.title)
+
+            localStorage.setItem("movies", JSON.stringify(movies))
+
+            loadMovies()
+
+        }
+
+    })
 
     movieList.appendChild(li)
-
-}
-
-function displayMovie(movie){
-
-const li = document.createElement("li")
-
-let stars = "★".repeat(movie.rating)
-
-li.innerHTML =
-`${movie.title} (${movie.year}) - ${movie.genre}, Rating: 
-<span class="movie-stars">${stars}</span>`
-
-movieList.appendChild(li)
 
 }
