@@ -4,7 +4,6 @@ const movieList = document.getElementById("movieList")
 
 let rating = 0
 
-// STAR RATING
 stars.forEach(star => {
     star.addEventListener("click", () => {
 
@@ -32,8 +31,6 @@ function loadMovies(){
     })
 }
 
-
-// ADD OR UPDATE MOVIE
 addMovieBtn.addEventListener("click", () => {
 
     const title = document.getElementById("title").value
@@ -52,8 +49,6 @@ addMovieBtn.addEventListener("click", () => {
     )
 
     if(existingMovie){
-
-        // UPDATE (average rating)
         existingMovie.rating = Math.round(
             (Number(existingMovie.rating) + Number(rating)) / 2
         )
@@ -79,8 +74,6 @@ addMovieBtn.addEventListener("click", () => {
 
 })
 
-
-// DISPLAY MOVIE
 function displayMovie(movie){
 
     const li = document.createElement("li")
