@@ -96,18 +96,50 @@ Position: absolute removes the element from the normal document flow and positio
 As the z-index value changes, it affects the position of the "notice" that lays on top of it. As the z-index = 0, the notice note would appear behind it, but as for when the z-index = 1, the note would appear on top of it and the view would not be blocked anymore. As the z-value decreases, the element would be positioned behind other elements with a higher z-value.
 
 - Challenge: 
-    * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
-    * Try to change the position of .content to relative then to fixed. What do you observed each time?
-    * What do you observe on about the effect of z-index on .notice and .content boxes?
+* What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).   
+  ```HTML:
+  
+  	<div class="content">
+  		Main Content
+  		<div class="notice">Notice!</div>
+	</div>
+	```
+  
+  ```css:
+	.content {
+  		position: relative; /* makes it the reference */
+  		background: lightyellow;
+  		width: 300px;
+  		height: 200px;
+  		z-index: 1;
+	}
+
+	.notice {
+  		position: absolute;
+  		top: 0;
+  		right: 0;
+  		background: orange;
+  		padding: 10px;
+  		z-index: 2;
+	}
+  ```
+  
+* Try to change the position of .content to relative then to fixed. What do you observed each time?
+      
+When .content is set to position: relative, it remains in the normal document flow and only shifts slightly from its original position, while still affecting surrounding elements. The .notice stays positioned relative to .content. However, when .content is changed to position: fixed, it is removed from the normal flow and stays locked in place on the screen even when scrolling. As a result, .notice also stays fixed along with .content, and other elements may overlap or ignore it.
+
+* What do you observe on about the effect of z-index on .notice and .content boxes?
+      
+The z-index property controls which element appears in front when elements overlap. The element with the higher z-index value is displayed on top of the one with a lower value. In this case, .notice appears above .content because it has a higher z-index. If the values are swapped, .content will cover .notice. This shows that increasing the z-index brings an element forward, while decreasing it pushes the element behind others.
 
 3. Please answer the following reflection questions (15 minutes)
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
 
-	•	Static: Default positioning; elements follow normal document flow and ignore offset properties.
-	•	Relative: Positioned relative to its original position; offsets move it without affecting layout space.
-	•	Absolute: Removed from normal flow and positioned relative to the nearest positioned ancestor.
-	•	Fixed: Removed from flow and positioned relative to the viewport; stays in place during scrolling.
+- **Static**: Default positioning; elements follow normal document flow and ignore offset properties.
+- **Relative**: Positioned relative to its original position; offsets move it without affecting layout space.
+- **Absolute**: Removed from normal flow and positioned relative to the nearest positioned ancestor.
+- **Fixed**: Removed from flow and positioned relative to the viewport; stays in place during scrolling.
 
     b. How does absolute positioning depend on its parent element?
 Absolute positioning depends on the nearest parent element that has a position other than static (such as relative, absolute, or fixed). If such a parent exists, the element is positioned relative to that parent; otherwise, it is positioned relative to the entire page.
