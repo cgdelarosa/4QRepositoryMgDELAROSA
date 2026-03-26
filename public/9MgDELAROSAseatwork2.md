@@ -57,17 +57,23 @@
 
 - Guided Question: What changed compared to the default static positioning? Try to give different values to top and left or you can change it to bottom, right.
 
+With position: relative, the element moves from its original (static) position based on the top, left, bottom, or right values, while still keeping its original space in the layout. Unlike static positioning, which ignores these offset properties, relative positioning allows controlled movement without affecting other elements’ positions.
+
 ### Step 2 (Fixed):
 
 - Add in css ```position: fixed; bottom: 0; width: 100%;``` to .footer.
 
 - Guided Question: What happens when you scroll the page? Why does the footer behave differently from position relative?
 
+When you scroll the page, the footer stays fixed at the bottom of the screen and does not move. This happens because position: fixed positions the element relative to the viewport, not the document flow. Unlike relative, which moves an element but keeps it within the normal layout flow, fixed removes the element from the flow and locks it in place on the screen.
+
 ### Step 3 (Absolute):
 
 - Add in css ```position: absolute; top: 66px; left: 200px;``` to .content.
 
 - Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?
+
+Position: absolute removes the element from the normal document flow and positions it relative to its nearest positioned ancestor (or the page if none exists). It can overlap other elements. Unlike fixed, which is always positioned relative to the viewport and stays in place when scrolling, absolute elements move along with the page when you scroll.
 
 ### Step 4 : (Absolute)
 
@@ -98,9 +104,13 @@ As the z-index value changes, it affects the position of the "notice" that lays 
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
 
+	•	Static: Default positioning; elements follow normal document flow and ignore offset properties.
+	•	Relative: Positioned relative to its original position; offsets move it without affecting layout space.
+	•	Absolute: Removed from normal flow and positioned relative to the nearest positioned ancestor.
+	•	Fixed: Removed from flow and positioned relative to the viewport; stays in place during scrolling.
 
     b. How does absolute positioning depend on its parent element?
-
+Absolute positioning depends on the nearest parent element that has a position other than static (such as relative, absolute, or fixed). If such a parent exists, the element is positioned relative to that parent; otherwise, it is positioned relative to the entire page.
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
 In both position elements, the output would both still be visible while scrolling. The key difference between sticky and fixed is that for fixed, it stays in the position that it is initially set on. Regardless of scrolling anywhere in the webpage, the object would stay in place according to the position it was set in. For sticky elements, it moves as you scroll until it reaches a certain defined offset that would make it "stick" in place. Although, these sticky elements only stay within its parent container. Once the parent container is out of the user's view, the sticky element sticks with it.
