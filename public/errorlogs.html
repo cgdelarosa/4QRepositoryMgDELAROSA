@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Colleen Dela Rosa">
+  <meta name="description" content="testing and debugging">
+  <meta name="keywords" content="testing and debugging">
+  <title>CS3 </title>
+  <link href="style3.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@300&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+  <style>
+    tr:nth-child(1) ~ tr:nth-child(odd) {
+      background-color: lightgray;
+      color: black;
+    }
+    td, th {
+      padding: 10px;
+    }
+    table {
+      width: 90%;
+      margin: 0 auto;
+    }
+    caption {
+      font-size: 2em;
+      font-weight: bold;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="index.html#start">Table</a>
+      <a href="index.html#input">Input</a>
+      <a href="index.html#output">Output</a>
+    </nav>
+    
+    <h1 style="padding: 30px">Colleen Dela Rosa / 9-Magnesium - Mar 30 2026 </h1>
+  </header>
+
+  <section id="table">
+    <table> 
+      <caption>Error Logs - place errors found in the table below</caption>
+      <tr class="rColor">
+        <th> item# </th> 
+        <th> code line#<br/>CSS or JS </th> 
+        <th> Description</th>
+        <th> Correction Done</th>
+      </tr>
+
+      <tr>
+        <td> 1 </td> 
+        <td> JS line 1 </td> 
+        <td> Function plotPoint has no parameters but arguments are passed </td>
+        <td> Added parameters (x0, y0, x, y) </td>
+      </tr>
+
+      <tr>
+        <td> 2 </td> 
+        <td> JS line 2 </td> 
+        <td> Variables x0, y0, x, y are undefined in console.log </td>
+        <td> Fixed by adding parameters to function </td>
+      </tr>
+
+      <tr>
+        <td> 3 </td> 
+        <td> JS line 3 </td> 
+        <td> in1 is used without selecting the element </td>
+        <td> Added document.getElementById("in1") </td>
+      </tr>
+
+      <tr>
+        <td> 4 </td> 
+        <td> JS line 7 </td> 
+        <td> Incorrect property name styleleft </td>
+        <td> Changed to style.left </td>
+      </tr>
+
+      <tr>
+        <td> 5 </td> 
+        <td> JS line 8 </td> 
+        <td> Incorrect property name stylebottom </td>
+        <td> Changed to style.bottom </td>
+      </tr>
+
+      <tr>
+        <td> 6 </td> 
+        <td> JS line 12 </td> 
+        <td> out1 is used without selecting the element </td>
+        <td> Added document.getElementById("out1") </td>
+      </tr>
+
+      <tr>
+        <td> 7 </td> 
+        <td> JS last line </td> 
+        <td> Missing closing brace for function </td>
+        <td> Added closing } at the end </td>
+      </tr>
+
+      <tr>
+        <td> 8 </td> 
+        <td> CSS nav a :hover </td> 
+        <td> Incorrect selector with space (targets wrong element) </td>
+        <td> Changed to nav a:hover </td>
+      </tr>
+
+      <tr>
+        <td> 9 </td> 
+        <td> CSS nav </td> 
+        <td> Navigation is not fixed at top as required </td>
+        <td> Added position: fixed and top: 0 </td>
+      </tr>
+
+      <tr>
+        <td> 10 </td> 
+        <td> CSS nav a </td> 
+        <td> Links are displayed vertically instead of horizontally </td>
+        <td> Changed display to inline-block or used flexbox </td>
+      </tr>
+
+    </table>
+    <hr>
+  </section>
+  
+  <footer>
+    <a href="https://facebook.com"> 
+      <div class="icon facebook"></div>
+    </a>
+    <a href="https://twitter.com">
+      <div class="icon twitter"></div>
+    </a>
+    <a href="https://github.com">
+      <div class="icon github"></div>
+    </a>
+  </footer>
+ 
+</body>
+</html>
